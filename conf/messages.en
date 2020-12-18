@@ -277,6 +277,13 @@ switchOverError.p1 = We have redesigned this service since you last worked on yo
 switchOverError.p2 = We have brought some of your answers across to the new service. However some of your answers have been lost.
 switchOverError.p3.link = Continue with your application
 
+# Technical Difficulties error page Messages
+# ----------------------------------------------------------
+technicalDifficultiesError.title = Sorry, there is a problem with the service - Error
+technicalDifficultiesError.heading = Sorry, there is a problem with the service
+technicalDifficultiesError.p1 = Try again later.
+technicalDifficultiesError.p2 = We saved your answers. They will be available for 28 days.
+
 # CheckIfCanRegisterPage Messages
 # ----------------------------------------------------------
 checkIfYouCanRegister.title = Check if you can register the charity
@@ -830,7 +837,7 @@ isBankStatements.checkYourAnswersLabel = Bank statements for the last 3 months
 # ----------------------------------------------------------
 whyNoBankStatement.title = Why does the charity not have bank statements for the last 3 months of operation?
 whyNoBankStatement.heading = Why does the charity not have bank statements for the last 3 months of operation?
-whyNoBankStatement.hint = If the account has been open for less than 3 months, you will need to provide a letter from the bank to prove that the charity has an account.
+whyNoBankStatement.hint = If the account has been open for less than 3 months, you must provide a bank statement for the past month.
 whyNoBankStatement.checkYourAnswersLabel = Why you do not have bank statements for the last 3 months
 whyNoBankStatement.error.required = Enter why the charity does not have bank statements for the last 3 months of operation
 whyNoBankStatement.error.format = Why the charity does not have bank statements must only include letters, numbers, hyphens, apostrophes, commas, spaces and full stops

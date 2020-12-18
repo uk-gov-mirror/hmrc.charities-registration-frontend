@@ -46,3 +46,6 @@ GET       /we-cannot-find-your-application              controllers.CannotFindAp
 
 ### Switchover error page route
 GET       /error/problem-with-your-answers              controllers.SwitchOverErrorController.onPageLoad
+
+### TechnicalDifficulties error page route
+GET       /error/problem-with-the-service               controllers.TechnicalDifficultiesErrorController.onPageLoad

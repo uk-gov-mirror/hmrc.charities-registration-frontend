@@ -43,7 +43,8 @@ trait BaseAddressController extends LocalBaseController {
 
     addressLookupConnector.initialize(callbackUrl, messagePrefix, fullName, allowedCountryCodes)(hc, ec, messagesApi) map {
       case Right(AddressLookupOnRamp(url)) => Redirect(url)
-      case Left(_) => InternalServerError(errorHandler.internalServerErrorTemplate)
+      case Left(_) => Redirect(controllers.routes.TechnicalDifficultiesErrorController.onPageLoad())
+        //InternalServerError(errorHandler.internalServerErrorTemplate)
     }
   }
 
@@ -60,11 +61,13 @@ trait BaseAddressController extends LocalBaseController {
             } yield Redirect(navigator.nextPage(page, mode, updatedAnswers))
           case _ =>
             Logger.error(s"[BaseAddressController][addressLookupCallback][$page] error was returned on callback from address lookup")
-            Future.successful(InternalServerError(errorHandler.internalServerErrorTemplate))
+            Future.successful(Redirect(controllers.routes.TechnicalDifficultiesErrorController.onPageLoad()))
+            //Future.successful(InternalServerError(errorHandler.internalServerErrorTemplate))
         }
       case _ =>
         Logger.error(s"[BaseAddressController][addressLookupCallback][$page] No ID was returned on callback from address lookup")
-        Future.successful(InternalServerError(errorHandler.internalServerErrorTemplate))
+        Future.successful(Redirect(controllers.routes.TechnicalDifficultiesErrorController.onPageLoad()))
+        //Future.successful(InternalServerError(errorHandler.internalServerErrorTemplate))
     }
   }
 

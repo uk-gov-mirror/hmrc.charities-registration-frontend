@@ -14,22 +14,25 @@
  * limitations under the License.
  */
 
-package viewmodels
+package controllers
 
 import config.FrontendAppConfig
+import controllers.actions.AuthIdentifierAction
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+
 import javax.inject.Inject
-import play.api.i18n.{I18nSupport, MessagesApi}
-import play.api.mvc.Request
-import play.twirl.api.Html
-import uk.gov.hmrc.play.bootstrap.http.FrontendErrorHandler
-import views.html.errors.ErrorTemplate
+import scala.concurrent.Future
 import views.html.errors.TechnicalDifficultiesErrorView
 
-class ErrorHandler @Inject()(val messagesApi: MessagesApi,
-                             errorTemplate: ErrorTemplate,
-                             technicalDifficultiesTemplate: TechnicalDifficultiesErrorView
-                            )(implicit appConfig: FrontendAppConfig) extends FrontendErrorHandler with I18nSupport {
+class TechnicalDifficultiesErrorController @Inject()(
+    identify: AuthIdentifierAction,
+    view: TechnicalDifficultiesErrorView,
+    val controllerComponents: MessagesControllerComponents
+  )(implicit appConfig: FrontendAppConfig) extends LocalBaseController {
 
-  override def standardErrorTemplate(pageTitle: String, heading: String, message: String)(implicit rh: Request[_]): Html =
-    technicalDifficultiesTemplate()
+  def onPageLoad: Action[AnyContent] = identify.async { implicit request =>
+
+    Future.successful(Ok(view()))
+  }
+
 }
