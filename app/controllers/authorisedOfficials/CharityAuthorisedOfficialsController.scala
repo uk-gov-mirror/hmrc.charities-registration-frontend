@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,14 @@ package controllers.authorisedOfficials
 import config.FrontendAppConfig
 import controllers.LocalBaseController
 import controllers.actions._
+
 import javax.inject.Inject
 import models.Index
+import pages.sections.Section7Page
 import play.api.mvc._
 import repositories.UserAnswerRepository
 import views.html.authorisedOfficials.CharityAuthorisedOfficialsView
+
 import scala.concurrent.Future
 
 
@@ -37,7 +40,9 @@ class CharityAuthorisedOfficialsController @Inject()(
    )(implicit appConfig: FrontendAppConfig) extends LocalBaseController {
 
   def onPageLoad(): Action[AnyContent] = (identify andThen getData andThen requireData).async { implicit request =>
-
-    Future.successful(Ok(view(Index(0))))
+    request.userAnswers match {
+      case userAnswers if (userAnswers.get(Section7Page).contains(true)) => Future.successful(Redirect(routes.AuthorisedOfficialsSummaryController.onPageLoad()))
+      case _ => Future.successful(Ok(view(Index(0))))
+    }
   }
 }

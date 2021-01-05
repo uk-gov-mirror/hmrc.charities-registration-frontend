@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,6 +63,8 @@ class AuthorisedOfficialsSummaryController @Inject()(
 
   def onSubmit: Action[AnyContent] = (identify andThen getData andThen requireData).async { implicit request =>
 
+    if(secondAuthorisedOfficialRow.nonEmpty){Redirect(navigator.nextPage(AuthorisedOfficialsSummaryPage, NormalMode, request.userAnswers))}
+
     if (secondAuthorisedOfficialRow.isEmpty) {
 
       form.bindFromRequest().fold(
@@ -84,7 +86,6 @@ class AuthorisedOfficialsSummaryController @Inject()(
           } yield Redirect(navigator.nextPage(AuthorisedOfficialsSummaryPage, NormalMode, taskListUpdated))
       )
     } else {
-
       for {
         updatedAnswers <- Future.fromTry(result = request.userAnswers.set(Section7Page,
           if(appConfig.isExternalTest) true else checkComplete(request.userAnswers)))
