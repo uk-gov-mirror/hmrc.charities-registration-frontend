@@ -307,6 +307,7 @@ class CharityCommonTransformerSpec extends SpecBase {
             |          "title": "0001"
             |        },
             |        "position": "23",
+            |        "postcode": "G58AN",
             |        "declaration": true,
             |        "overseas": false
             |      }
@@ -384,6 +385,7 @@ class CharityCommonTransformerSpec extends SpecBase {
             |          "title": "0001"
             |        },
             |        "position": "23",
+            |        "postcode": "G58AN",
             |        "declaration": true,
             |        "overseas": false
             |      },
@@ -461,6 +463,7 @@ class CharityCommonTransformerSpec extends SpecBase {
             |          "title": "0001"
             |        },
             |        "position": "23",
+            |        "postcode": "G58AN",
             |        "declaration": true,
             |        "overseas": false
             |      },

@@ -202,6 +202,7 @@ trait CharityTransformerConstants extends SpecBase{
        |          "title": "0001"
        |        },
        |        "position": "02",
+       |        "postcode": "G27JD",
        |        "declaration": true,
        |        "overseas": false
        |      },
@@ -389,6 +390,7 @@ trait CharityTransformerConstants extends SpecBase{
        |          "title": "0001"
        |        },
        |        "position": "02",
+       |        "postcode": "G27JD",
        |        "declaration": true,
        |        "overseas": false
        |      },
@@ -557,6 +559,7 @@ trait CharityTransformerConstants extends SpecBase{
        |          "title": "0001"
        |        },
        |        "position": "23",
+       |        "postcode": "G27JD",
        |        "declaration": true,
        |        "overseas": false
        |      },
